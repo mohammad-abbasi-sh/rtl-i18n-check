@@ -1,0 +1,57 @@
+---
+description: Check fa/ar/ur/he locale files for the RTL bugs generic i18n checkers cannot see — unisolated LTR islands, ZWNJ loss, Arabic/Persian letter-variant mixing, mixed digit scripts, missing CLDR plural forms, bidi control characters, translated or dropped placeholders. Apply whenever an agent translates locale files, when fa/ar/ur strings render backwards or lose numbers, when a PR touches .json/.arb/.xml/.po/.yaml locale files, or before shipping any Arabic/Persian/Urdu UI.
+globs: "**/*.{json,arb,xml,po,yaml,yml}"
+alwaysApply: false
+---
+
+# RTL locale-file QA — the layer your i18n checker is missing
+
+## The contract
+
+1. **Check first, with the tool — never guess.** Run the checker
+   (zero-dependency, Python stdlib only):
+
+   ```bash
+   python3 scripts/rtl_i18n_check.py locales/fa.json [--source locales/en.json]
+   ```
+
+   Exit codes: `0` = no errors · `1` = errors found ·
+   `2` = usage error or an unreadable file. `--fix` writes
+   `<name>.fixed.<ext>` (never overwrites the input) with only the
+   safely mechanical fixes (RTL-01/02/03/04); RTL-05/06/07 need a
+   human. Re-check the fixed file until exit 0.
+2. **The fix is mechanical + reviewed, not silent.** Never edit
+   locale strings by hand to silence a finding — run `--fix`,
+   review the `.fixed` diff, re-check. Never auto-fix a missing
+   plural form or a translated placeholder name.
+3. **Know the limits — and say them.** This checks the RTL *text*
+   layer of locale files only. Missing keys, untranslated English
+   and ICU syntax belong to StringLane / Locale Guard / Shipi18n;
+   RTL layout (CSS, icon mirroring) belongs to a layout tool.
+
+## What each check means
+
+- **RTL-01 bidi isolation** — LTR island (Latin name, URL, email,
+  `{placeholder}`, `$5`) inside RTL text without FSI…PDI
+  (U+2068…U+2069) or `<bdi>`. Pure digit runs between RTL words
+  are fine per the bidi algorithm; digits touching Latin text or
+  a currency symbol are not.
+- **RTL-02 ZWNJ** — fa/ur: `می شود` / `کتاب ها` with a space
+  instead of ZWNJ (`می‌شود`, `کتاب‌ها`).
+- **RTL-03 letter variants** — Arabic ي/ك/ة in a Persian file (or
+  Persian ی/ک/گ/چ/پ/ژ in an Arabic file). One variant is not found
+  by a query using the other.
+- **RTL-04 digit scripts** — two digit scripts in one string, or a
+  string using the file's minority script (`--digits fa|ar|latn`
+  pins the policy).
+- **RTL-05 plurals** — missing CLDR forms (Arabic needs six,
+  Persian/Urdu two); Arabic zero/one/two forms must not carry a
+  count placeholder — the number lives in the word itself.
+- **RTL-06 bidi controls** — overrides (RLO/LRO/…) or unpaired
+  isolates. Use isolates, never overrides.
+- **RTL-07 placeholders** — non-ASCII placeholder names (a
+  translator translated `{name}` itself), or placeholder sets
+  differing from the source locale for the same key.
+
+See `skills/rtl-i18n-check/SKILL.md` for the full contract and
+`references/rtl-rules.md` for why each check exists.
