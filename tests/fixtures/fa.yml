@@ -1,0 +1,6 @@
+fa:
+  greeting: "سلام {userName}، به برنامه خوش آمدید"
+  app_name: برنامه من
+  nested:
+    deep_key: متن تو در تو
+  price: قیمت 250 تومان است
