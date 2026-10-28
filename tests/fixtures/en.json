@@ -1,0 +1,13 @@
+{
+  "alerts_one": "one alert",
+  "digits": "You have 5 points and 3 stars",
+  "docs_link": "See https://example.com for the guide",
+  "greeting": "Hello {userName}, welcome to the app",
+  "inbox": "You have 3 new messages",
+  "items": "{count, plural, one {one item} other {# items}}",
+  "messages_one": "one message",
+  "messages_other": "{count} messages",
+  "placeholder_name": "Hello {name}, how are you?",
+  "price_usd": "Price: $5",
+  "welcome_name": "Hello John, how are you?"
+}
