@@ -1,0 +1,8 @@
+{
+  "greeting": "مرحبا {userName}، لديك 3 رسائل جديدة",
+  "items": "{count, plural, one {رسالة واحدة} other {# رسائل}}",
+  "items_zero": "{count, plural, zero {# رسائل} one {رسالة واحدة} two {رسالتان} few {# رسائل} many {# رسالة} other {# رسائل}}",
+  "unclosed": "النص ⁧بدون إغلاق",
+  "variant": "مرحبا، این کتاب برای شما است",
+  "welcome": "أهلاً بك في التطبيق"
+}
