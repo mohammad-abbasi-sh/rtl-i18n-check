@@ -1,0 +1,15 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "greeting"
+msgstr "سلام {userName}، به برنامه خوش آمدید"
+
+msgid "app_name"
+msgstr "برنامه من"
+
+msgid "one item"
+msgid_plural "%d items"
+msgstr[0] "یک مورد"
+msgstr[1] "%d مورد"
