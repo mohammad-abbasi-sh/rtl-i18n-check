@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="greeting">سلام {userName}، به برنامه خوش آمدید</string>
+    <string name="app_name">برنامه من</string>
+    <string name="price">قیمت 250 تومان است</string>
+    <plurals name="items">
+        <item quantity="one">یک مورد</item>
+        <item quantity="other">%d مورد</item>
+    </plurals>
+    <plurals name="messages">
+        <item quantity="other">%d پیام</item>
+    </plurals>
+</resources>
