@@ -1,0 +1,21 @@
+{
+  "alerts_one": "یک هشدار",
+  "digits": "شما ۵ امتیاز و 3 ستاره دارید",
+  "docs_link": "برای راهنما به https://example.com مراجعه کنید",
+  "greeting": "سلام {userName}، به برنامه خوش آمدید",
+  "inbox": "شما 3 پیام جدید دارید",
+  "items": "{count, plural, one {یک مورد} other {# مورد}}",
+  "items_few": "{count, plural, other {# مورد}}",
+  "messages_one": "یک پیام",
+  "messages_other": "{count} پیام",
+  "override": "متن ‮پنهان",
+  "placeholder_name": "سلام {نام}، چطوری؟",
+  "plural": "کتاب ها روی میز است",
+  "price": "قیمت 250 تومان است",
+  "price_usd": "قیمت $5 است",
+  "score": "امتیاز شما ۵ از ۱۰ است",
+  "unclosed": "متن ⁨بدون بستن",
+  "variant": "اين كتاب جديد است",
+  "verb": "من می خواهم کتاب بخوانم",
+  "welcome_name": "سلام John، چطوری؟"
+}
